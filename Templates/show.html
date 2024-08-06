@@ -1,0 +1,47 @@
+{% extends 'inner-page.html' %}
+{% load static %}
+
+{% block body %}
+
+    <table class="table table-dark">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Date</th>
+        <th>Department</th>
+        <th>Doctor</th>
+        <th>Message</th>
+        <th>Action</th>
+    </tr>
+
+
+    {% for x in appointments %}
+        <tr>
+            <td>{{ x.name }}</td>
+            <td>{{ x.email }}</td>
+            <td>{{ x.phone }}</td>
+            <td>{{ x.date }}</td>
+            <td>{{ x.department }}</td>
+            <td>{{ x.doctor }}</td>
+            <td>{{ x.message }}</td>
+            <td>
+                <a href="/edit/{{ x.id }}" class="btn btn-primary">EDIT</a>
+                <a href="/delete/{{ x.id }}" class="btn btn-danger">DELETE</a>
+                <a href="{% url 'pay' %}" class="btn btn-warning">PAY</a>
+            </td>
+        </tr>
+
+
+
+    {% endfor %}
+
+
+
+    </table>
+
+
+
+
+
+{% endblock %}
